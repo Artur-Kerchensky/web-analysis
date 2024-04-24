@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="chart-container">
+        <div class="chart">
+            <h2>График 1</h2>
+            <!-- Код для первого графика -->
+            <select>
+                <option>Круговая диаграмма</option>
+                <option>Столбчатая диаграмма</option>
+            </select>
+        </div>
+        <div class="chart">
+            <h2>График 2</h2>
+            <!-- Код для второго графика -->
+            <select>
+                <option>Круговая диаграмма</option>
+                <option>Столбчатая диаграмма</option>
+            </select>
+        </div>
+    </div>
+
+    <div>
+        <table border="" width="100%" cellpadding="5">
+            <tbody>
+               <tr>
+                   {% for item in data[0] %}
+                        <th scope="col">{{ item }}</th>
+                   {% endfor %}
+               </tr>
+            </tbody>
+            <tbody>
+               {% for line in data[1:] %}
+               <tr>
+                   <th scope="row"> {{ line[0] }} </th>
+
+                   {% for item in line[1:] %}
+                        <td> {{ item }} </td>
+                   {% endfor %}
+
+               </tr>
+               {% endfor %}
+            </tbody>
+
+     </table>
+    </div>
+
+{% endblock %}

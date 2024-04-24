@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                    crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="topnav">
+      <!--  Это точно стоит передалать  -->
+
+      {% if request.path == '/analitica' %}
+        <a href="/analitica" class="active">Аналитика</a>
+      {% else %}
+        <a href="/analitica"> Аналитика</a>
+      {% endif %}
+
+      {% if request.path == '/preview' or request.path == '/' %}
+        <a href="/preview" class="active"> Пробный просмотр </a>
+      {% else %}
+        <a href="/preview"> Пробный просмотр </a>
+      {% endif %}
+
+      <div class="topnav-right">
+        {% if current_user.is_authenticated %}
+          {% if request.path == '/profile' %}
+            <a href="/profile" class="active"> Профиль</a>
+          {% else %}
+            <a href="/profile"> Профиль </a>
+          {% endif %}
+
+        {% else %}
+
+            <p>
+              {% if request.path == '/register' %}
+                <a class="active" href="/register">Зарегистрироваться</a>
+              {% else %}
+                <a href="/register">Зарегистрироваться</a>
+              {% endif %}
+
+
+              {% if request.path == '/login' %}
+                <a class="active" href="/login">Войти</a>
+              {% else %}
+                <a href="/login">Войти</a>
+              {% endif %}
+            </p>
+
+        {% endif %}
+      </div>
+    </div>
+
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
