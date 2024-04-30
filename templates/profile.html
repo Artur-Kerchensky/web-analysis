@@ -53,6 +53,37 @@
             </div>
           </div>
         </div>
+
+        <div class="topnav-center">
+          <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Загрузить</button>
+          </form>
+        </div>
+
+        <div>
+           <table border="" width="100%" cellpadding="5">
+              <tbody>
+                 <tr>
+                   <th scope="col">Имя</th>
+                   <th scope="col">Дата загрузки</th>
+                 </tr>
+              </tbody>
+              <tbody>
+                 {% for file in files %}
+                 <tr>
+                   <th scope="row"> {{ file.title }} </th>
+                   <td> {{ file.created_date.strftime('%Y-%m-%d %H:%M:%S')}} </td>
+                 </tr>
+                 {% endfor %}
+              </tbody>
+            </table>
+        </div>
+        <div class="topnav-right">
+          <form method="post" action="/logout">
+            <button type="submit">Выйти</button>
+          </form>
+        </div>
     </div>
 
 {% endblock %}

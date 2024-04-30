@@ -2,22 +2,25 @@
 
 {% block content %}
 
+
+
+    <div>
+        <form id="file-form" action="/analitica/<file>">
+        <select id="file-select" name="file">
+                {% for file in files %}
+                    <option value={{file.title}}> {{file.title}} </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Выбрать файл</button>
+        </form>
+    </div>
+
     <div class="chart-container">
         <div class="chart">
-            <h2>График 1</h2>
-            <!-- Код для первого графика -->
-            <select>
-                <option>Круговая диаграмма</option>
-                <option>Столбчатая диаграмма</option>
-            </select>
+            <img src="{{ url_for('static', filename='diagram.png') }} " class="center-image">
         </div>
         <div class="chart">
-            <h2>График 2</h2>
-            <!-- Код для второго графика -->
-            <select>
-                <option>Круговая диаграмма</option>
-                <option>Столбчатая диаграмма</option>
-            </select>
+            <img src="{{ url_for('static', filename='circular.png') }}" class="center-image">
         </div>
     </div>
 
